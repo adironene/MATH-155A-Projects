@@ -116,58 +116,52 @@ void mySetupGeometries() {
 	// THIS GEOMETRY WILL NEED TO BE REPLACED BY (PERHAPS!) FOUR GEOMETRIES TO FORM THE OBELISK.
 	//   SUGGESTED WAY TO FORM THE OBELISK IS WITH TWO TRIANGLE STRIPS AND 
 	//   A TRIANGLE FAN AND TWO MORE TRIANGLES.
-	// First Geometry : a Triangle Strip which forms the entire tetrahedron
-	float tetraVerts[] = {
-		// Positions										// Colors
-		0.0f, -2.0f / sqrtf(6.0f), 4.0f / sqrtf(3.0f),		1.0f, 0.0f, 0.0f, // Front vertex, red
-		2.0f, -2.0f / sqrtf(6.0f), -2.0f / sqrtf(3.0f),		0.0f, 1.0f, 0.0f, // Right back vertex, green
-		0.0f, 6.0f/sqrtf(6.0f), 0.0f,						0.7f, 0.7f, 0.7f, // Top, light gray
-		-2.0f, -2.0f / sqrtf(6.0f), -2.0f / sqrtf(3.0f),	0.0f, 0.0f, 1.0f, // Left back vertex, blue	
-		0.0f, -2.0f / sqrtf(6.0f), 4.0f / sqrtf(3.0f),		1.0f, 0.0f, 0.0f, // Front vertex, red, again
-		2.0f, -2.0f / sqrtf(6.0f), -2.0f / sqrtf(3.0f),		0.0f, 1.0f, 0.0f, // Right back vertex, green, again	
-	};
 
 	float topVerts[] = {
-		// Positions										// Colors
-		0.0f, 4.0f, 0.0f,		1.0f, 0.0f, 0.0f, // Front vertex, red
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),0.0f, 1.0f, 0.0f,
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.7f, 0.7f, 0.7f,
-		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),  0.4f, 0.0f, 0.0f,
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f), 0.0f, 1.0f, 0.0f,
+		// Positions						// Colors
+		0.0f,	4.0f,	0.0f,				1.0f, 1.0f, 1.0f,
+		-1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,	// light green
+		1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,
+		1.0f,	3.0f,	-1.0f,				0.6f, 0.6f, 1.0f,	// light purple
+		-1.0f,	3.0f,	-1.0f,				1.0f, 0.6f, 0.6f,	// light orange
+		-1.0f,	3.0f,	1.0f,				1.0f, 1.0f, 0.6f,	// light yellow
+		1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,
 
 		//body
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),0.0f, 1.0f, 0.0f,
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.8f, 0.0f, 0.8f,
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.7f, 0.7f, 0.7f,
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.2f, 0.2f, 0.f,
-		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),-sqrtf(1.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),  0.4f, 0.0f, 0.0f,
-		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.5f,
-		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f), 0.0f, 1.0f, 0.0f,
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.3f, 1.0f, 0.3f,
+		-1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
+		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.6f, 1.0f, 0.6f,
+		1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,	// light green
+		sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
+		1.0f,			3.0f,	-1.0f,			0.6f, 0.6f, 1.0f,	// light purple
+		sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,	// blue
+		-1.0f,			3.0f,	-1.0f,			1.0f, 0.6f, 0.6f,	// light orange
+		-sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	// red
+		-1.0f,			3.0f,	1.0f,			1.0f, 1.0f, 0.6f,	// light yellow
+		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
+		1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
+		
+
 
 		//base
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.8f, 0.0f, 0.8f,
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.7f, 0.7f, 0.7f,
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.2f, 0.2f, 0.f,
-		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.0f,
-		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.5f,
-		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.0f, 1.0f, 0.0f,
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.3f, 1.0f, 0.3f,
+		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
+		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
+		sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,	
+		sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,	// blue
+		-sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	
+		-sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	// red
+		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	
+		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
+
 
 		//bottom
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.7f, 0.7f, 0.7f,
-		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
-		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
-		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
-		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.0f,
-
+		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
+		-sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
+		sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
+		sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
+		sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
+		-sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	0.7f, 0.7f, 0.7f,
 	};
 
 	glBindVertexArray(myVAO[iTetra]);
@@ -230,11 +224,11 @@ void myRenderScene() {
 		// Draw entire tetrahedron as a Triangle Strip
 		glBindVertexArray(myVAO[iTetra]);
 		//glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
-		glDrawArrays(GL_TRIANGLE_STRIP, 6, 10);
-		glDrawArrays(GL_TRIANGLE_STRIP,16, 10);
-		glDrawArrays(GL_TRIANGLES, 26, 3);
-		glDrawArrays(GL_TRIANGLES, 29, 3);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 7);
+		glDrawArrays(GL_TRIANGLE_STRIP, 7, 11);
+		glDrawArrays(GL_TRIANGLE_STRIP,18, 10);
+		glDrawArrays(GL_TRIANGLES, 28, 3);
+		glDrawArrays(GL_TRIANGLES, 31, 3);
 
 	}
 	
