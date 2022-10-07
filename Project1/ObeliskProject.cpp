@@ -113,7 +113,7 @@ void mySetupGeometries() {
 	//   SUGGESTED WAY TO FORM THE OBELISK IS WITH TWO TRIANGLE STRIPS AND 
 	//   A TRIANGLE FAN AND TWO MORE TRIANGLES.
 
-	float topVerts[] = {
+	float obe_vertices[] = {
 		// Positions						// Colors
 		0.0f,	4.0f,	0.0f,				1.0f, 1.0f, 1.0f,
 		-1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,	// light green
@@ -165,7 +165,7 @@ void mySetupGeometries() {
 
 	glBindVertexArray(myVAO[iTetra]);
 	glBindBuffer(GL_ARRAY_BUFFER, myVBO[iTetra]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(topVerts), topVerts, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(obe_vertices), obe_vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(aPos_loc, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);	// Store vertices in the VBO
 	glEnableVertexAttribArray(aPos_loc);									// Enable the stored vertices
 	glVertexAttribPointer(aColor_loc, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
