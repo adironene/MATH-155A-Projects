@@ -31,9 +31,9 @@
 //#include "GLFW/glfw3.h"
 #include <GLFW/glfw3.h>
 
-#include "ShaderMgrSAM.h"
-#include "LinearR3.h"		// Adjust path as needed.
-#include "LinearR4.h"		// Adjust path as needed.
+#include "../Project1/ShaderMgrSAM.h"
+#include "../Project1/LinearR3.h"		// Adjust path as needed.
+#include "../Project1/LinearR4.h"		// Adjust path as needed.
 bool check_for_opengl_errors();     // Function prototype (should really go in a header file)
 
 // Enable standard input and output via printf(), etc.
@@ -127,9 +127,52 @@ void mySetupGeometries() {
 		2.0f, -2.0f / sqrtf(6.0f), -2.0f / sqrtf(3.0f),		0.0f, 1.0f, 0.0f, // Right back vertex, green, again	
 	};
 
+	float topVerts[] = {
+		// Positions										// Colors
+		0.0f, 4.0f, 0.0f,		1.0f, 0.0f, 0.0f, // Front vertex, red
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),0.0f, 1.0f, 0.0f,
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.7f, 0.7f, 0.7f,
+		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),  0.4f, 0.0f, 0.0f,
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f), 0.0f, 1.0f, 0.0f,
+
+		//body
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.8f, 0.0f, 0.8f,
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(1.0f), 0.7f, 0.7f, 0.7f,
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.2f, 0.2f, 0.f,
+		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),-sqrtf(1.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f),  0.4f, 0.0f, 0.0f,
+		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.5f,
+		sqrtf(1.0f), 4.0f - 2.0f * sqrtf(1.0f),sqrtf(1.0f), 0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.3f, 1.0f, 0.3f,
+
+		//base
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.8f, 0.0f, 0.8f,
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.7f, 0.7f, 0.7f,
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.2f, 0.2f, 0.f,
+		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.0f,
+		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.5f,
+		sqrtf(2.0f), 1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f), 0.3f, 1.0f, 0.3f,
+
+		//bottom
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.7f, 0.7f, 0.7f,
+		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
+		sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),0.0f, 1.0f, 0.0f,
+		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f) ,-sqrtf(2.0f), 0.0f, 0.0f, 1.0f,
+		-sqrtf(2.0f),-1.0f - 2.0f * sqrtf(1.0f),sqrtf(2.0f),  0.4f, 0.0f, 0.0f,
+
+	};
+
 	glBindVertexArray(myVAO[iTetra]);
 	glBindBuffer(GL_ARRAY_BUFFER, myVBO[iTetra]);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(tetraVerts), tetraVerts, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(topVerts), topVerts, GL_STATIC_DRAW);
 	glVertexAttribPointer(aPos_loc, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);	// Store vertices in the VBO
 	glEnableVertexAttribArray(aPos_loc);									// Enable the stored vertices
 	glVertexAttribPointer(aColor_loc, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
@@ -186,7 +229,13 @@ void myRenderScene() {
 		// THE NEXT LINES WILL NEED TO BE CHANGED TO DRAW THE OBELISK:
 		// Draw entire tetrahedron as a Triangle Strip
 		glBindVertexArray(myVAO[iTetra]);
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+		//glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
+		glDrawArrays(GL_TRIANGLE_STRIP, 6, 10);
+		glDrawArrays(GL_TRIANGLE_STRIP,16, 10);
+		glDrawArrays(GL_TRIANGLES, 26, 3);
+		glDrawArrays(GL_TRIANGLES, 29, 3);
+
 	}
 	
 	check_for_opengl_errors();   // Really a great idea to check for errors -- esp. good for debugging!
