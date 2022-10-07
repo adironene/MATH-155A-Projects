@@ -139,6 +139,7 @@ void mySetupGeometries() {
 		-1.0f,			3.0f,	1.0f,			1.0f, 1.0f, 0.6f,	// light yellow
 		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
 		1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
+		sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
 		
 
 
@@ -153,6 +154,8 @@ void mySetupGeometries() {
 		-sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	// red
 		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	
 		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
+		sqrt(2.0f),		-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
+		sqrt(2.0f),		-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
 
 
 		//bottom
