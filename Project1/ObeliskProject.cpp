@@ -55,11 +55,7 @@ bool cullBackFaces = false; // Equals true to cull backfaces. Equals false to no
 //    and Vertex Buffer Objects.
 // ***********************
 
-// NumObjects: PROBABLY SHOULD EQUAL 4 TO FORM THE OBELISK WITH
-//     (1) TWO TRIANGLES (THE BOTTON FACES, FACING DOWNWARD), 
-//     (2) A TRIANGLE STRIP (SIDES OF BASE, FACING OUTWARD) 
-//     (3) A TRIANGLE STRIP (SIDES OF MAIN PART, FACING OUTWARD)
-// AND (4) A TRIANGLE FAN (top).
+// NumObjects: I left it to be 1 because i grouped the vertices in one array
 const int NumObjects = 1;
 const int iTetra = 0;
 
@@ -226,12 +222,12 @@ void myRenderScene() {
 		// THE NEXT LINES WILL NEED TO BE CHANGED TO DRAW THE OBELISK:
 		// Draw entire tetrahedron as a Triangle Strip
 		glBindVertexArray(myVAO[iTetra]);
-		//glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+		//glVertexAttrib3f(aColor_loc, 0.7f, 0.7f, 0.7f);
 		glDrawArrays(GL_TRIANGLE_FAN, 0, 7);
-		glDrawArrays(GL_TRIANGLE_STRIP, 7, 11);
-		glDrawArrays(GL_TRIANGLE_STRIP,18, 10);
-		glDrawArrays(GL_TRIANGLES, 28, 3);
+		glDrawArrays(GL_TRIANGLE_STRIP, 7, 12);
+		glDrawArrays(GL_TRIANGLE_STRIP,19, 12);
 		glDrawArrays(GL_TRIANGLES, 31, 3);
+		glDrawArrays(GL_TRIANGLES, 34, 3);
 
 	}
 	
