@@ -42,16 +42,18 @@
 #include <GL/glew.h> 
 #include <GLFW/glfw3.h>
 
-#include "MathMisc.h"
-#include "LinearR3.h"
-#include "LinearR4.h"		
-#include "GlGeomSphere.h"
+#include "../Project 2/MathMisc.h"
+#include "../Project 2/LinearR3.h"
+#include "../Project 2/LinearR4.h"		
+#include "../Project 2/GlGeomSphere.h"
+#include "../Project 2/GlGeomTorus.h"
 #include "ShaderMgrSLR.h"
 bool check_for_opengl_errors();     // Function prototype (should really go in a header file)
 
 // Enable standard input and output via printf(), etc.
 // Put this include *after* the includes for glew and GLFW!
 #include <stdio.h>
+#include <math.h>
 
 // ********************
 // Animation controls and state infornation
@@ -67,7 +69,11 @@ double PreviousTime = 0.0;
 // These three variables control the animation's state and speed.
 double HourOfDay = 0.0;
 double DayOfYear = 0.0;
+double xDayOfYear = 0.0;
 double AnimateIncrement = 24.0;  // Time step for animation (in units of hours)
+
+double tiltDegree = 24.0;
+double tiltRad = 24.0 * PI / 180;
 
 double viewAzimuth = 0.25;	// Angle of view up/down (in radians)
 //double viewAzimuth = PIhalves;	// Angle of view : solar system is viewed from the top
@@ -82,6 +88,7 @@ LinearMapR4 viewMatrix;		// The current view matrix, based on viewAzimuth and vi
 // These objects take care of generating and loading VAO's, VBO's and EBO's,
 //    rendering spheres for the moon, earch and sun.
 // They render as radius 1 spheres (but will be scaled by the Model matrix)
+GlGeomTorus MyTorus(40, 10, 0.01);
 GlGeomSphere Moon1(6, 6);    // A sphere with 6 slices and 6 stacks
 GlGeomSphere Earth(8, 12);    // A sphere with 8 slices and 12 stacks
 GlGeomSphere Sun(10, 10);    // A sphere with 10 slices and 10 stacks
@@ -133,7 +140,8 @@ const double ZnearMin = 1.0;
 void mySetupGeometries() {
 
 	// These routines take care of loading info into their VAO's, VBO's and EBO's.
-	Sun.InitializeAttribLocations(vertPos_loc);
+    MyTorus.InitializeAttribLocations(vertPos_loc);
+    Sun.InitializeAttribLocations(vertPos_loc);
 	Earth.InitializeAttribLocations(vertPos_loc);
 	Moon1.InitializeAttribLocations(vertPos_loc);
 
@@ -169,10 +177,11 @@ void myRenderScene() {
         // Update the animation state
         HourOfDay += thisAnimateIncrement;
         DayOfYear += thisAnimateIncrement / 24.0;
+        xDayOfYear += thisAnimateIncrement / 24.0;
 
         HourOfDay = HourOfDay - ((int)(HourOfDay / 24)) * 24;       // Wrap back to be in range [0,24)
         DayOfYear = DayOfYear - ((int)(DayOfYear / 365)) * 365;     // Wrap back to be in range [0,365)
-
+        xDayOfYear = xDayOfYear - ((int)(DayOfYear / 500)) * 500;     // Wrap back to be in range [0,500)
         if (singleStep) {
             spinMode = false;       // If in single step mode, turn off future animation
         }
@@ -180,28 +189,61 @@ void myRenderScene() {
 
 
 	glUseProgram(shaderProgram1);
-	LinearMapR4 SunPosMatrix = viewMatrix;				// Place Sun at center of the scene
-	// SunPosMatrix.Mult_glScale(1.0);						// Scaling by (1, 1, 1) has no effect
-    SunPosMatrix.DumpByColumns(matEntries);           // These two lines load the matrix into the shader
+    LinearMapR4 CenterPosMatrix = viewMatrix;
+
+    LinearMapR4 Torus = CenterPosMatrix;
+    Torus.Mult_glScale(4.0);
+    Torus.DumpByColumns(matEntries);
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    glVertexAttrib3f(vertColor_loc, 1.0f, 0.0f, 0.0f);
+    MyTorus.Render();
+
+	LinearMapR4 Sun1PosMatrix = CenterPosMatrix;				// Place Sun at center of the scene
+    Sun1PosMatrix.Mult_glScale(0.8);						// Scaling by (1, 1, 1) has no effect
+    double sunRevolveAngle = (DayOfYear / 73.0) * PI2;
+    Sun1PosMatrix.Mult_glRotate(sunRevolveAngle, 0.0, 1.0, 0.0);   // Revolve the earth around the sun
+    Sun1PosMatrix.Mult_glTranslate(0.0, 0.0, 1.5);		// Place the earth five units away from the sun
+    Sun1PosMatrix.DumpByColumns(matEntries);           // These two lines load the matrix into the shader
 	glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
 	glVertexAttrib3f(vertColor_loc, 1.0f, 1.0f, 0.0f);     // Make the sun yellow
 	Sun.Render();
+
+    LinearMapR4 Sun2PosMatrix = CenterPosMatrix;
+    Sun2PosMatrix.Mult_glScale(0.8);						// Scaling by (1, 1, 1) has no effect
+    Sun2PosMatrix.Mult_glRotate(sunRevolveAngle, 0.0, 1.0, 0.0);   // Revolve the earth around the sun
+    Sun2PosMatrix.Mult_glTranslate(0.0, 0.0, -1.5);		// Place the earth five units away from the sun
+    Sun2PosMatrix.DumpByColumns(matEntries);           // These two lines load the matrix into the shader
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    glVertexAttrib3f(vertColor_loc, 1.0f, 1.0f, 0.0f);     // Make the sun yellow
+    Sun.Render();
     
     // EarthPosMatrix - specifies position of the earth
     // EarthMatrix - specifies the size of the earth and its rotation on its axis
-	LinearMapR4 EarthPosMatrix = SunPosMatrix;
+	LinearMapR4 EarthPosMatrix = CenterPosMatrix;
     double revolveAngle = (DayOfYear / 365.0)*PI2;
-    EarthPosMatrix.Mult_glRotate(revolveAngle, 0.0, 1.0, 0.0);   // Revolve the earth around the sun
-	EarthPosMatrix.Mult_glTranslate(0.0, 0.0, 5.0);		// Place the earth five units away from the sun
+	EarthPosMatrix.Mult_glTranslate(4*cos(-1*revolveAngle), 0.0, 4*sin(-1*revolveAngle));		// Place the earth five units away from the sun
+    EarthPosMatrix.Mult_glRotate(-tiltRad, 0.0, 0.0, 1.0);
 
 	LinearMapR4 EarthMatrix = EarthPosMatrix;
     double earthRotationAngle = (HourOfDay / 24.0)*PI2;
-    EarthMatrix.Mult_glRotate(earthRotationAngle, 0.0, 1.0, 0.0);   // Rotate earth on y-axis
+    //EarthMatrix.Mult_glRotate(earthRotationAngle, sin(tiltRad), cos(tiltRad), 0.0);
+    EarthMatrix.Mult_glRotate(earthRotationAngle, 0.0, 1.0, 0.0);
 	EarthMatrix.Mult_glScale(0.5);                                  // Make radius 0.5.
 	EarthMatrix.DumpByColumns(matEntries);
 	glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
 	glVertexAttrib3f(vertColor_loc, 0.2f, 0.4f, 1.0f);     // Make the earth bright cyan-blue
 	Earth.Render();
+
+    LinearMapR4 PlanetXMatrix = CenterPosMatrix;
+    double plantRotationAngle = (xDayOfYear / 500.0) * PI2;
+    PlanetXMatrix.Mult_glScale(0.5);
+    PlanetXMatrix.Mult_glRotate(plantRotationAngle, 0.0, 1.0, 0.0);   // Revolve the planet around the sun
+    PlanetXMatrix.Mult_glTranslate(0.0, 0.0, 12.0);		
+    PlanetXMatrix.DumpByColumns(matEntries);           // These two lines load the matrix into the shader
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    glVertexAttrib3f(vertColor_loc, 0.3f, 0.3f, 0.3f);     // Make the sun yellow
+    Earth.Render();
+    //PlanetMat
 
     // MoonMatrix - control placement, and size of the moon.
  	LinearMapR4 MoonMatrix = EarthPosMatrix;        // Base the moon's matrix off the earth's *POS* matrix (EarthPosMatrix)
@@ -213,6 +255,16 @@ void myRenderScene() {
 	glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
 	glVertexAttrib3f(vertColor_loc, 0.9f, 0.9f, 0.9f);     // Make the moon bright gray
 	Moon1.Render();
+
+    LinearMapR4 SubMoon = MoonMatrix;       
+    double subMoonRotationAngle = (DayOfYear * 12.0 / 121.0) * PI2;
+    SubMoon.Mult_glRotate(subMoonRotationAngle, 0.0, 1.0, 0.0);
+    SubMoon.Mult_glTranslate(0.0, 0.0, 2.0);	 
+    SubMoon.Mult_glScale(0.5);                 
+    SubMoon.DumpByColumns(matEntries);
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    glVertexAttrib3f(vertColor_loc, 0.0f, 1.0f, 0.0f);   
+    Moon1.Render();
 
 	check_for_opengl_errors();   // Really a great idea to check for errors -- esp. good for debugging!
 }
