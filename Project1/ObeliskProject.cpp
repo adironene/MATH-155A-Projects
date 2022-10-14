@@ -15,8 +15,8 @@
  * Web page: http://math.ucsd.edu/~sbuss/MathCG2
  */
 
-// These libraries are needed to link the program.
-// First five are usually proved by the system.
+ // These libraries are needed to link the program.
+ // First five are usually proved by the system.
 #pragma comment(lib,"opengl32.lib")
 #pragma comment(lib,"glu32.lib")
 #pragma comment(lib,"glfw3.lib")
@@ -116,12 +116,12 @@ void mySetupGeometries() {
 	float obe_vertices[] = {
 		// Positions						// Colors
 		0.0f,	4.0f,	0.0f,				1.0f, 1.0f, 1.0f,
-		-1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,	// light green
-		1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,
+		-1.0f,	3.0f,	1.0f,				1.0f, 1.0f, 0.6f,	// light yellow
+		1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,	// light green
 		1.0f,	3.0f,	-1.0f,				0.6f, 0.6f, 1.0f,	// light purple
 		-1.0f,	3.0f,	-1.0f,				1.0f, 0.6f, 0.6f,	// light orange
 		-1.0f,	3.0f,	1.0f,				1.0f, 1.0f, 0.6f,	// light yellow
-		1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,
+		//1.0f,	3.0f,	1.0f,				0.6f, 1.0f, 0.6f,
 
 		//body
 		-1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
@@ -134,9 +134,9 @@ void mySetupGeometries() {
 		-sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	// red
 		-1.0f,			3.0f,	1.0f,			1.0f, 1.0f, 0.6f,	// light yellow
 		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
-		1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
-		sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
-		
+		//1.0f,			3.0f,	1.0f,			0.6f, 1.0f, 0.6f,
+		//sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
+
 
 
 		//base
@@ -144,14 +144,14 @@ void mySetupGeometries() {
 		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
 		sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
 		sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
-		sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,	
+		sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,
 		sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	0.1f, 0.0f, 1.0f,	// blue
-		-sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	
+		-sqrtf(2.0f),	-1.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,
 		-sqrtf(2.0f),	-3.0f,	-sqrtf(2.0f),	1.0f, 0.0f, 0.0f,	// red
-		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	
+		-sqrtf(2.0f),	-1.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,
 		-sqrtf(2.0f),	-3.0f,	sqrtf(2.0f),	1.0f, 1.0f, 0.0f,	// yellow
-		sqrt(2.0f),		-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
-		sqrt(2.0f),		-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
+		//sqrt(2.0f),		-1.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,
+		//sqrt(2.0f),		-3.0f,	sqrtf(2.0f),	0.0f, 1.0f, 0.0f,	// dark green
 
 
 		//bottom
@@ -205,12 +205,12 @@ void myRenderScene() {
 		else {
 			theModelViewMatrix.Mult_glTranslate(1.5, 0.0, 0.0);		// Translate 1.5 down the POSTIVE x-axis.
 		}
-		
+
 		// YOU SHOULD ADD AN EXTRA TRANSLATION HERE IF THE OBELISK IS NOT (ROUGLY)
 		//     CENTERED AT THE ORIGIN.
 		//    FOR THIS, USE Mult_glTranslate, SIMILARLY TO:
 		// theModelViewMatrix.Mult_glTranslate(0.0, yTranslation, 0.0);
-		
+
 		// THE NEXT Mult_glScale COMMAND MAY NEED TO BE CHANGED TO MAKE THE OBELISK EITHER
 		// SMALLER OR LARGER, IN ORDER TO FIT WELL IN THE SCENE.
 		// YOU CAN CHANGE THE CALL TO Mult_glScale TO CHANGE THE SIZE.
@@ -223,14 +223,14 @@ void myRenderScene() {
 		// Draw entire tetrahedron as a Triangle Strip
 		glBindVertexArray(myVAO[iTetra]);
 		//glVertexAttrib3f(aColor_loc, 0.7f, 0.7f, 0.7f);
-		glDrawArrays(GL_TRIANGLE_FAN, 0, 7);
-		glDrawArrays(GL_TRIANGLE_STRIP, 7, 12);
-		glDrawArrays(GL_TRIANGLE_STRIP,19, 12);
-		glDrawArrays(GL_TRIANGLES, 31, 3);
-		glDrawArrays(GL_TRIANGLES, 34, 3);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
+		glDrawArrays(GL_TRIANGLE_STRIP, 6, 10);
+		glDrawArrays(GL_TRIANGLE_STRIP, 16, 10);
+		glDrawArrays(GL_TRIANGLES, 26, 6);
+		//glDrawArrays(GL_TRIANGLES, 34, 3);
 
 	}
-	
+
 	check_for_opengl_errors();   // Really a great idea to check for errors -- esp. good for debugging!
 }
 
@@ -299,13 +299,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	case GLFW_KEY_LEFT:
 		viewDirection += deltaAngle;		// Increment
 		if (viewDirection > Pi) {
-			viewDirection -= 2.0*Pi;		// Wrap back to -pi after reaching +pi
+			viewDirection -= 2.0 * Pi;		// Wrap back to -pi after reaching +pi
 		}
 		break;
 	case GLFW_KEY_RIGHT:
 		viewDirection -= deltaAngle;		// Decrement
 		if (viewDirection <= -Pi) {
-			viewDirection += 2.0*Pi;			// Wrap back to +pi after reaching -pi
+			viewDirection += 2.0 * Pi;			// Wrap back to +pi after reaching -pi
 		}
 		break;
 	}
@@ -335,16 +335,16 @@ void window_size_callback(GLFWwindow* window, int width, int height) {
 	if ((Xmax - Xmin) / w < (Ymax - Ymin) / h) {
 		double scale = ((Ymax - Ymin) / h) / ((Xmax - Xmin) / w);
 		double center = (Xmax + Xmin) / 2.0;
-		windowXmin = center - (center - Xmin)*scale;
-		windowXmax = center + (Xmax - center)*scale;
+		windowXmin = center - (center - Xmin) * scale;
+		windowXmax = center + (Xmax - center) * scale;
 		windowYmin = Ymin;
 		windowYmax = Ymax;
 	}
 	else {
 		double scale = ((Xmax - Xmin) / w) / ((Ymax - Ymin) / h);
 		double center = (Ymax + Ymin) / 2;
-		windowYmin = center - (center - Ymin)*scale;
-		windowYmax = center + (Ymax - center)*scale;
+		windowYmin = center - (center - Ymin) * scale;
+		windowYmax = center + (Ymax - center) * scale;
 		windowXmin = Xmin;
 		windowXmax = Xmax;
 	}
@@ -366,7 +366,7 @@ void window_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 void my_setup_OpenGL() {
-	
+
 	glEnable(GL_DEPTH_TEST);	// Enable depth buffering
 	glDepthFunc(GL_LEQUAL);		// Useful for multipass shaders
 
@@ -425,9 +425,9 @@ int main() {
 	printf("Renderer: %s\n", glGetString(GL_RENDERER));
 	printf("OpenGL version supported %s\n", glGetString(GL_VERSION));
 #ifdef GL_SHADING_LANGUAGE_VERSION
-	printf("Supported GLSL version is %s.\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	printf("Supported GLSL version is %s.\n", (char*)glGetString(GL_SHADING_LANGUAGE_VERSION));
 #endif
-    printf("Using GLEW version %s.\n", glewGetString(GLEW_VERSION));
+	printf("Using GLEW version %s.\n", glewGetString(GLEW_VERSION));
 
 	printf("------------------------------\n");
 	printf("Press arrow keys (up, down, left, right) to adjust view direction.\n");
@@ -435,22 +435,22 @@ int main() {
 	printf("Press W (Wireframe) to change between GL_POLYGON_MODE of GL_FILL and GL_LINES.\n");
 	printf("Press C (Cull faces) to toggle whether back faces are culled.\n");
 	printf("Press EXCAPE or 'X' or 'x' to exit.\n");
-	
-    setup_callbacks(window);
-   
-	// Initialize OpenGL, the scene and the shaders
-    my_setup_OpenGL();
-	my_setup_SceneData();
- 	window_size_callback(window, initWidth, initHeight);
 
-    // Loop while program is not terminated.
+	setup_callbacks(window);
+
+	// Initialize OpenGL, the scene and the shaders
+	my_setup_OpenGL();
+	my_setup_SceneData();
+	window_size_callback(window, initWidth, initHeight);
+
+	// Loop while program is not terminated.
 	while (!glfwWindowShouldClose(window)) {
-	
+
 		myRenderScene();				// Render into the current buffer
 		glfwSwapBuffers(window);		// Displays what was just rendered (using double buffering).
 
 		// Poll events (key presses, mouse events)
-		glfwWaitEventsTimeout(1.0/60.0);	    // Use this to animate at 60 frames/sec (timing is NOT reliable)
+		glfwWaitEventsTimeout(1.0 / 60.0);	    // Use this to animate at 60 frames/sec (timing is NOT reliable)
 		// glfwWaitEvents();					// Or, Use this instead if no animation.
 		// glfwPollEvents();					// Use this version when animating as fast as possible
 	}
