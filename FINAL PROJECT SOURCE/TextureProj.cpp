@@ -108,8 +108,8 @@ LinearMapR4 theProjectionMatrix;		//  The Projection matrix: Controls the "camer
 // Be sure to leave some slack in these values, to allow for rotations, etc.
 // The model/view matrix can be used to move objects to this position
 // THESE VALUES MAY NEED AD-HOC ADJUSTMENT TO GET THE SCENE TO BE VISIBLE.
-const double Xmax = 8.0;                // Control x dimensions of viewable scene
-const double Ymax = 6.0;                // Control y dimensions of viewable scene
+const double Xmax = 100;                // Control x dimensions of viewable scene
+const double Ymax = 20;                // Control y dimensions of viewable scene
 const double Zmin = -200.0, Zmax = 200.0;   // Control z dimensions of the viewable scene
 
 // zDistance equals the initial distance from the camera to the z = Zmax plane
@@ -181,7 +181,7 @@ void mySetViewMatrix() {
     viewMatrix.Set_glTranslate(0.0, 0.0, -(20 + zDistance + ZextraDistance));      // Translate to be in front of the camera
     viewMatrix.Mult_glRotate(viewAzimuth, 1.0, 0.0, 0.0);	    // Rotate viewAzimuth radians around x-axis
     viewMatrix.Mult_glRotate(-viewDirection, 0.0, 1.0, 0.0);    // Rotate -viewDirection radians around y-axis
-    viewMatrix.Mult_glTranslate(0.0, -3.5, 0.0);                // Translate the scene down the y-axis so the center is near the origin.
+    viewMatrix.Mult_glTranslate(0.0, -3.5, -10.0);                // Translate the scene down the y-axis so the center is near the origin.
 }
 
 // *************************************
@@ -326,29 +326,29 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     case GLFW_KEY_UP:
       //ZextraDistance -= ZextraDelta;
       //viewAzimuth = Min(viewAzimuth + 0.01, PIhalves - 0.05);
-        snorlaxPOSy -= 0.05;
+        snorlaxPOSy -= 0.1;
         viewChanged = true;
         break;
     case GLFW_KEY_DOWN:
       //ZextraDistance += ZextraDelta;
       //viewAzimuth = Max(viewAzimuth - 0.01, -PIhalves + 0.05);
-        snorlaxPOSy += 0.05;
+        snorlaxPOSy += 0.1;
         viewChanged = true;
         break;
     case GLFW_KEY_RIGHT:
         snorlaxPOV -= 0.02;
-        //viewDirection -= 0.01;
-        //if (viewDirection > PI) {
-        //    viewDirection -= PI2;
-        //}
+        viewDirection -= 0.01;
+        if (viewDirection > PI) {
+            viewDirection -= PI2;
+        }
 
         viewChanged = true;
         break;
     case GLFW_KEY_LEFT:
-        //viewDirection += 0.01;
-        //if (viewDirection < -PI) {
-        //    viewDirection += PI2;
-        //}
+        viewDirection += 0.01;
+        if (viewDirection < -PI) {
+            viewDirection += PI2;
+        }
         snorlaxPOV += 0.02;
         viewChanged = true;
         break;
@@ -489,12 +489,16 @@ void setProjectionMatrix() {
 	double windowXmax, windowYmax;
     double aspectFactor = w * Ymax / (h * Xmax);   // == (w/h)/(Xmax/Ymax), ratio of aspect ratios
 	if (aspectFactor>1) {
-		windowXmax = Xmax * aspectFactor;
+		//windowXmax = Xmax * aspectFactor;
+        windowXmax = 10;
 		windowYmax = Ymax;
+        windowYmax = 5;
 	}
 	else {
 		windowYmax = Ymax / aspectFactor;
-		windowXmax = Xmax;
+		//windowXmax = Xmax;
+        windowXmax = 10;
+        windowYmax = 5;
 	}
 
 	// Using the max & min values for x & y & z that should be visible in the window,

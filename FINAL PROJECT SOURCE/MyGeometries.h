@@ -26,5 +26,6 @@ void renderTemple();
 void renderTempleLawn();
 void renderFence();
 void renderTempleWall();
-
+void renderGateWall();
+void renderBuilding1();
 
