@@ -24,5 +24,7 @@ void SamsRenderCircularSurf();      // Renders the meshed circular surface
 void renderChar();
 void renderTemple();
 void renderTempleLawn();
+void renderFence();
+void renderTempleWall();
 
 

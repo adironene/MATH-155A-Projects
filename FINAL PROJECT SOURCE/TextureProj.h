@@ -68,6 +68,7 @@ void myRenderScene();
 
 void my_setup_SceneData();
 void my_setup_OpenGL();
+void skyBoxSet();
 void setProjectionMatrix();
 
 void selectShaderProgram(unsigned int shaderProgram);

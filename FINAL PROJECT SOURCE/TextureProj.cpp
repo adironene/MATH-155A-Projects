@@ -27,6 +27,7 @@
 
 // Use the static library (so glew32.dll is not needed):
 #define GLEW_STATIC
+#include <filesystem>
 #include <GL/glew.h> 
 #include <GLFW/glfw3.h>
 
@@ -38,6 +39,8 @@
 #include "GlGeomSphere.h"
 #include "GlGeomCylinder.h"
 #include "GlGeomTorus.h"
+#define STB_IMAGE_IMPLEMENTATION
+#include "std_image.h"
 
 // Enable standard input and output via printf(), etc.
 // Put this include *after* the includes for glew and GLFW!
@@ -45,6 +48,7 @@
 
 #include "TextureProj.h"
 #include "MyGeometries.h"
+#include "shaderClass.h"
 
 
 
@@ -106,7 +110,7 @@ LinearMapR4 theProjectionMatrix;		//  The Projection matrix: Controls the "camer
 // THESE VALUES MAY NEED AD-HOC ADJUSTMENT TO GET THE SCENE TO BE VISIBLE.
 const double Xmax = 8.0;                // Control x dimensions of viewable scene
 const double Ymax = 6.0;                // Control y dimensions of viewable scene
-const double Zmin = -18.0, Zmax = 18.0;   // Control z dimensions of the viewable scene
+const double Zmin = -200.0, Zmax = 200.0;   // Control z dimensions of the viewable scene
 
 // zDistance equals the initial distance from the camera to the z = Zmax plane
 const double zDistance = 20.0;              // Make this value larger or smaller to affect field of view.
@@ -117,6 +121,42 @@ const double ZextraDistanceMin = -15.0;
 const double ZextraDistanceMax = 50.0;
 int screenWidth = 800, screenHeight = 600;     // Width and height in pixels. Initially 800x600
 
+// skybox
+
+float skyboxVertices[] =
+{
+    //   Coordinates
+    -1.0f, -1.0f,  1.0f,//        7--------6
+     1.0f, -1.0f,  1.0f,//       /|       /|
+     1.0f, -1.0f, -1.0f,//      4--------5 |
+    -1.0f, -1.0f, -1.0f,//      | |      | |
+    -1.0f,  1.0f,  1.0f,//      | 3------|-2
+     1.0f,  1.0f,  1.0f,//      |/       |/
+     1.0f,  1.0f, -1.0f,//      0--------1
+    -1.0f,  1.0f, -1.0f
+};
+
+unsigned int skyboxIndices[] =
+{
+    // Right
+    1, 2, 6,
+    6, 5, 1,
+    // Left
+    0, 4, 7,
+    7, 3, 0,
+    // Top
+    4, 5, 6,
+    6, 7, 4,
+    // Bottom
+    0, 3, 2,
+    2, 1, 0,
+    // Back
+    0, 1, 5,
+    5, 4, 0,
+    // Front
+    3, 7, 6,
+    6, 2, 3
+};
 
 // *************************
 // mySetupGeometries defines the scene data, especially vertex  positions and colors.
@@ -138,7 +178,7 @@ void mySetViewMatrix() {
     // The final translation is done because the ground plane lies in the xz-plane,
     //    se the center of the scene is about 3 or 4 units above the origin.
     // YOU MAY NEED TO ADJUST THE FINAL TRANSLATION AND?OR ADD A SCALING TO MAKE THE SCENE VISIBLE.
-    viewMatrix.Set_glTranslate(0.0, 0.0, -(Zmax + zDistance + ZextraDistance));      // Translate to be in front of the camera
+    viewMatrix.Set_glTranslate(0.0, 0.0, -(20 + zDistance + ZextraDistance));      // Translate to be in front of the camera
     viewMatrix.Mult_glRotate(viewAzimuth, 1.0, 0.0, 0.0);	    // Rotate viewAzimuth radians around x-axis
     viewMatrix.Mult_glRotate(-viewDirection, 0.0, 1.0, 0.0);    // Rotate -viewDirection radians around y-axis
     viewMatrix.Mult_glTranslate(0.0, -3.5, 0.0);                // Translate the scene down the y-axis so the center is near the origin.
@@ -284,14 +324,14 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         break;
 
     case GLFW_KEY_UP:
-        //ZextraDistance -= ZextraDelta;
-        //viewAzimuth = Min(viewAzimuth + 0.01, PIhalves - 0.05);
+      //ZextraDistance -= ZextraDelta;
+      //viewAzimuth = Min(viewAzimuth + 0.01, PIhalves - 0.05);
         snorlaxPOSy -= 0.05;
         viewChanged = true;
         break;
     case GLFW_KEY_DOWN:
-        //ZextraDistance += ZextraDelta;
-        //viewAzimuth = Max(viewAzimuth - 0.01, -PIhalves + 0.05);
+      //ZextraDistance += ZextraDelta;
+      //viewAzimuth = Max(viewAzimuth - 0.01, -PIhalves + 0.05);
         snorlaxPOSy += 0.05;
         viewChanged = true;
         break;
@@ -365,6 +405,81 @@ void window_size_callback(GLFWwindow* window, int width, int height) {
     setProjectionMatrix();
 }
 
+void skyBoxSet() {
+
+    Shader skyboxShader("skybox.vert", "skybox.frag");
+    skyboxShader.Activate();
+    glUniform1i(glGetUniformLocation(skyboxShader.ID, "skybox"), 0);
+
+    // Create VAO, VBO, and EBO for the skybox
+    unsigned int skyboxVAO, skyboxVBO, skyboxEBO;
+    glGenVertexArrays(1, &skyboxVAO);
+    glGenBuffers(1, &skyboxVBO);
+    glGenBuffers(1, &skyboxEBO);
+    glBindVertexArray(skyboxVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, skyboxEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(skyboxIndices), &skyboxIndices, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+    std::string facesCubemap[6] =
+    {
+        "right.png",
+        "leftMost.png",
+        "up.png",
+        "down.png",
+        "center.png",
+        "rightMost.png"
+    };
+
+    // Creates the cubemap texture object
+    unsigned int cubemapTexture;
+    glGenTextures(1, &cubemapTexture);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    // These are very important to prevent seams
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    // This might help with seams on some systems
+    //glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+
+    // Cycles through all the textures and attaches them to the cubemap object
+    for (unsigned int i = 0; i < 6; i++)
+    {
+        int width, height, nrChannels;
+        unsigned char* data = stbi_load(facesCubemap[i].c_str(), &width, &height, &nrChannels, 0);
+        if (data)
+        {
+            stbi_set_flip_vertically_on_load(false);
+            glTexImage2D
+            (
+                GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+                0,
+                GL_RGB,
+                width,
+                height,
+                0,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
+                data
+            );
+            stbi_image_free(data);
+        }
+        else
+        {
+            std::cout << "Failed to load texture: " << facesCubemap[i] << std::endl;
+            stbi_image_free(data);
+        }
+    }
+
+}
 void setProjectionMatrix() {
 	// Setup the projection matrix as a perspective view.
 	// The complication is that the aspect ratio of the window may not match the
@@ -452,7 +567,7 @@ int main() {
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-
+    gladLoadGL();
 	if (GLEW_OK != glewInit()) {
 		printf("Failed to initialize GLEW!.\n");
 		return -1;
@@ -486,6 +601,7 @@ int main() {
 	// Initialize OpenGL, the scene and the shaders
     my_setup_OpenGL();
 	my_setup_SceneData();
+    //skyBoxSet();
  	window_size_callback(window, screenWidth, screenHeight);
 
     // Loop while program is not terminated.
