@@ -19,7 +19,7 @@ extern phMaterial myMaterials[3];
 // They are enabled/disabled by PhongProj.cpp code (already written)
 // myLights[0], myLights[1], myLights[2] are the three lights above the scene.
 // myLights[3] is the spotlight.
-extern phLight myLights[4];
+extern phLight myLights[5];
 
 void MySetupGlobalLight();
 void MySetupLights();

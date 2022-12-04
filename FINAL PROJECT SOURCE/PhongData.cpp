@@ -22,23 +22,24 @@ phMaterial myMaterials[3];
 // They are enabled/disabled by TextureProj.cpp code (already written)
 // myLights[0], myLights[1], myLights[2] are the three lights above the scene.
 // myLights[3] is the spotlight.
-phLight myLights[4];
+phLight myLights[5];
 
 GlGeomSphere myLightSphere(10,10); // Small sphere showing the position of a light.
 phMaterial myEmissiveMaterials;   // Use for small spheres showing the location of the lights.
 
 // Suggested positions for the lights. It is OK to change them if it fits in your scene better.
 // Especially, you may need to move them higher or lower!
-VectorR3 myLightPositions[3] = {
-    VectorR3(-5.0, 7.0, 0.0),
-    VectorR3(0.0, 7.0, 0.0),
-    VectorR3(5.0, 7.0, 0.0),
+VectorR3 myLightPositions[4] = {
+    VectorR3(-20.0, 10.0, 10.0),
+    VectorR3(0.0, 10.0, 0.0),
+    VectorR3(5.0, 10.0, 0.0),
+    VectorR3(-5.0, 10.0, 0.0),
 };
 
 // Global Lighting parameters
 void MySetupGlobalLight()
 {
-    globalPhongData.NumLights = 4;     // Should be enough lights for most 155A programming projects
+    globalPhongData.NumLights = 5;     // Should be enough lights for most 155A programming projects
 
     // FEEL FREE TO CHANGE THIS VALUE IF IT HELPS YOUR SCENE LOOK BETTER (E.G. IN LOW LIGHT)
     globalPhongData.GlobalAmbientColor.Set(0.1, 0.1, 0.1);
@@ -53,7 +54,7 @@ void MySetupLights()
     
     // First light (light #0).
     myLights[0].AmbientColor.Set(0.2, 0.2, 0.2);    // Gray color
-    myLights[0].DiffuseColor.Set(0.8,0.8,0.8);      // Very light gray
+    myLights[0].DiffuseColor.Set(0.6,0.6,0.6);      // Very light gray
     myLights[0].SpecularColor.Set(0.9, 0.9, 0.9);   // Very light gray
     myLights[0].IsEnabled = true;                   // BE SURE TO ENABLE YOUR LIGHTS
 
@@ -64,16 +65,22 @@ void MySetupLights()
     myLights[1].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
     // Third light (light #2)
-    myLights[2].AmbientColor.Set(0.0, 0.4, 0.4);    // Yellow color
-    myLights[2].DiffuseColor.Set(0.3, 0.5, 0.5);      // Very light gray
-    myLights[2].SpecularColor.Set(0.6, 0.8, 0.8);   // Very light gray
+    myLights[2].AmbientColor.Set(0.2, 0.2, 0.15);    // Yellow color
+    myLights[2].DiffuseColor.Set(0.4, 0.4, 0.3);      // Very light gray
+    myLights[2].SpecularColor.Set(0.6, 0.6, 0.45);   // Very light gray
     myLights[2].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
-    myLights[3].DiffuseColor.Set(0.6, 0.6, 0.6);      // Very light gray
-    myLights[3].SpotCosCutoff = 0.95f;
-    myLights[3].IsSpotLight = true;
-    myLights[3].SpotExponent = 1.0f;
-    myLights[3].IsEnabled = true;                   // BE SURE TO ENABLE YOUR LIGHTS
+    myLights[4].DiffuseColor.Set(0.6, 0.6, 0.6);      // Very light gray
+    myLights[4].SpotCosCutoff = 0.95f;
+    myLights[4].IsSpotLight = true;
+    myLights[4].SpotExponent = 1.0f;
+    myLights[4].IsEnabled = true;                   // BE SURE TO ENABLE YOUR LIGHTS
+
+        // Third light (light #2)
+    myLights[3].AmbientColor.Set(0.1, 0.2, 0.1);    // GREEN
+    myLights[3].DiffuseColor.Set(0.2, 0.4, 0.2);      // Very light gray
+    myLights[3].SpecularColor.Set(0.4, 0.8, 0.4);   // Very light gray
+    myLights[3].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
 }
 
@@ -88,9 +95,13 @@ void LoadAllLights()
     myLights[2].SetPosition(viewMatrix, myLightPositions[2]);
     myLights[2].LoadIntoShaders(2);  
 
-    myLights[3].SetPosition(viewMatrix, VectorR3(0.0, 6.0, 4.0));
-    myLights[3].SetSpotlightDirection(viewMatrix, VectorR3(0.0, -1.0, -0.5));
+    myLights[3].SetPosition(viewMatrix, myLightPositions[3]);
     myLights[3].LoadIntoShaders(3);
+
+    myLights[4].SetPosition(viewMatrix, VectorR3(0.0, 6.0, 4.0));
+    myLights[4].SetSpotlightDirection(viewMatrix, VectorR3(0.0, -1.0, -0.5));
+    myLights[4].LoadIntoShaders(4);
+
 }
 
 // *******************************************
@@ -104,7 +115,7 @@ void LoadAllLights()
 void MySetupMaterials()
 {
     // myMaterials[0]: Material for the initial
-    myMaterials[0].EmissiveColor.Set(0.0f, 0.0f, 0.0f);   // THIS SHOULD CHANGE TO 0,0,0 SO IT HAS NO EMISSION
+    myMaterials[0].EmissiveColor.Set(0.2f, 0.2f, 0.2f);   // THIS SHOULD CHANGE TO 0,0,0 SO IT HAS NO EMISSION
     myMaterials[0].AmbientColor.Set(0.3f, 0.4f, 0.3f);
     myMaterials[0].DiffuseColor.Set(0.6f, 0.8f, 0.6f);
     myMaterials[0].SpecularColor.Set(1.0,1.0,1.0);
@@ -133,7 +144,7 @@ void MyRenderSpheresForLights() {
    float matEntries[16];	// Holds 16 floats (since cannot load doubles into a shader that uses floats)
    phMaterial myEmissiveMaterial;
 
-   for (int i = 0; i < 3; i++) {
+   for (int i = 0; i < 4; i++) {
         if (myLights[i].IsEnabled) {
             LinearMapR4 modelviewMat = viewMatrix;
             modelviewMat.Mult_glTranslate(myLightPositions[i].x, myLightPositions[i].y,myLightPositions[i].z);

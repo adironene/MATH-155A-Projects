@@ -337,18 +337,20 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         break;
     case GLFW_KEY_RIGHT:
         snorlaxPOV -= 0.02;
+        //snorlaxPOSx += 0.1;
         viewDirection -= 0.01;
-        if (viewDirection > PI) {
-            viewDirection -= PI2;
-        }
+        //if (viewDirection > PI) {
+        //    viewDirection -= PI2;
+        //}
 
         viewChanged = true;
         break;
     case GLFW_KEY_LEFT:
         viewDirection += 0.01;
-        if (viewDirection < -PI) {
-            viewDirection += PI2;
-        }
+        //if (viewDirection < -PI) {
+        //    viewDirection += PI2;
+        //}
+        //snorlaxPOSx -= 0.1;
         snorlaxPOV += 0.02;
         viewChanged = true;
         break;
