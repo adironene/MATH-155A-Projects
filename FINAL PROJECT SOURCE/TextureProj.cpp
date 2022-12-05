@@ -77,6 +77,9 @@ double snorlaxPOV = PI / 2;
 double snorlaxPOSx = 0;
 double snorlaxPOSy = 0;
 
+double mapValx = 0.63;
+double mapValy = 0.7;
+
 // These variables control the animation's state and speed.
 // YOUR CODE WILL NOT USE THIS UNLESS YOU ADD ANIMATION  
 double animateIncrement = 0.01;   // Make bigger to speed up animation, smaller to slow it down.
@@ -327,30 +330,41 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
       //ZextraDistance -= ZextraDelta;
       //viewAzimuth = Min(viewAzimuth + 0.01, PIhalves - 0.05);
         snorlaxPOSy -= 0.1;
+        if (mapValy < 1) {
+            mapValy += 0.0007;
+        }
         viewChanged = true;
         break;
     case GLFW_KEY_DOWN:
       //ZextraDistance += ZextraDelta;
       //viewAzimuth = Max(viewAzimuth - 0.01, -PIhalves + 0.05);
+        if (mapValy > 0) {
+            mapValy -= 0.0007;
+        }
         snorlaxPOSy += 0.1;
         viewChanged = true;
         break;
     case GLFW_KEY_RIGHT:
         snorlaxPOV -= 0.02;
-        //snorlaxPOSx += 0.1;
-        viewDirection -= 0.01;
+        snorlaxPOSx += 0.1;
+        //viewDirection -= 0.01;
         //if (viewDirection > PI) {
         //    viewDirection -= PI2;
         //}
-
+        if (mapValx < 1) {
+            mapValx += 0.0005;
+        }
         viewChanged = true;
         break;
     case GLFW_KEY_LEFT:
-        viewDirection += 0.01;
+        //viewDirection += 0.01;
         //if (viewDirection < -PI) {
         //    viewDirection += PI2;
         //}
-        //snorlaxPOSx -= 0.1;
+        snorlaxPOSx -= 0.1;
+        if (mapValx > 0) {
+            mapValx -= 0.0005;
+        }
         snorlaxPOV += 0.02;
         viewChanged = true;
         break;

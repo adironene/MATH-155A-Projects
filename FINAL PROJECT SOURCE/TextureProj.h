@@ -32,6 +32,9 @@ extern double snorlaxPOV;
 extern double snorlaxPOSx;
 extern double snorlaxPOSy;
 
+extern double mapValx;
+extern double mapValy;
+
 // These variables control the animation's state and speed.
 // YOU PROBABLY WANT TO CHANGE PARTS OF THIS FOR YOUR CUSTOM ANIMATION.  
 extern double animateIncrement;   // Make bigger to speed up animation, smaller to slow it down.

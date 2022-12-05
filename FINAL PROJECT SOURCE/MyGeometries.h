@@ -29,4 +29,5 @@ void renderTempleWall();
 void renderGateWall();
 void renderBuilding1();
 void renderBuilding2();
+void renderCurb();
 

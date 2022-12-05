@@ -32,7 +32,7 @@ phMaterial myEmissiveMaterials;   // Use for small spheres showing the location 
 VectorR3 myLightPositions[4] = {
     VectorR3(-20.0, 10.0, 10.0),
     VectorR3(0.0, 10.0, 0.0),
-    VectorR3(5.0, 10.0, 0.0),
+    VectorR3(11.6, 10.5, 17.0), // map lax
     VectorR3(-5.0, 10.0, 0.0),
 };
 
@@ -65,8 +65,8 @@ void MySetupLights()
     myLights[1].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
     // Third light (light #2)
-    myLights[2].AmbientColor.Set(0.2, 0.2, 0.15);    // Yellow color
-    myLights[2].DiffuseColor.Set(0.4, 0.4, 0.3);      // Very light gray
+    myLights[2].AmbientColor.Set(0.2, 0.2, 0.2);    // Yellow color
+    myLights[2].DiffuseColor.Set(0.4, 0.4, 0.4);      // Very light gray
     myLights[2].SpecularColor.Set(0.6, 0.6, 0.45);   // Very light gray
     myLights[2].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
