@@ -76,6 +76,10 @@ int meshRes=20;             // Resolution of the meshes (slices, stacks, and rin
 double snorlaxPOV = PI / 2;
 double snorlaxPOSx = 0;
 double snorlaxPOSy = 0;
+double armTime = 0;
+
+double faceDir = 0;
+bool faceSide = false;
 
 double mapValx = 0.63;
 double mapValy = 0.7;
@@ -329,18 +333,24 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     case GLFW_KEY_UP:
       //ZextraDistance -= ZextraDelta;
       //viewAzimuth = Min(viewAzimuth + 0.01, PIhalves - 0.05);
+        faceSide = false;
+        faceDir = 0;
         snorlaxPOSy -= 0.1;
         if (mapValy < 1) {
             mapValy += 0.0007;
         }
+        armTime += 0.02;
         viewChanged = true;
         break;
     case GLFW_KEY_DOWN:
       //ZextraDistance += ZextraDelta;
       //viewAzimuth = Max(viewAzimuth - 0.01, -PIhalves + 0.05);
+        faceSide = false;
+        faceDir = 360;
         if (mapValy > 0) {
             mapValy -= 0.0007;
         }
+        armTime += 0.02;
         snorlaxPOSy += 0.1;
         viewChanged = true;
         break;
@@ -351,9 +361,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         //if (viewDirection > PI) {
         //    viewDirection -= PI2;
         //}
+
+        faceSide = true;
+        faceDir = -180;
         if (mapValx < 1) {
             mapValx += 0.0005;
         }
+        armTime += 0.02;
         viewChanged = true;
         break;
     case GLFW_KEY_LEFT:
@@ -361,10 +375,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         //if (viewDirection < -PI) {
         //    viewDirection += PI2;
         //}
+        faceSide = true;
+        faceDir = 180;
         snorlaxPOSx -= 0.1;
         if (mapValx > 0) {
             mapValx -= 0.0005;
         }
+        armTime += 0.02;
         snorlaxPOV += 0.02;
         viewChanged = true;
         break;

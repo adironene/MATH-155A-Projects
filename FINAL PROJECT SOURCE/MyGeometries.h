@@ -30,4 +30,5 @@ void renderGateWall();
 void renderBuilding1();
 void renderBuilding2();
 void renderCurb();
+void renderBuilding3();
 
