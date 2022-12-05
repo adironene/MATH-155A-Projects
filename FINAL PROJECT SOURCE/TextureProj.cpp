@@ -199,7 +199,7 @@ void myRenderScene() {
     glUniform1f(timeLoc, (float)currentTime);
    
     // Clear the rendering window
-    static const float black[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+    static const float black[] = { 0.67f, 0.84f, 0.9f, 1.0f };
     const float clearDepth = 1.0f;
     glClearBufferfv(GL_COLOR, 0, black);
     glClearBufferfv(GL_DEPTH, 0, &clearDepth);	// Must pass in a *pointer* to the depth

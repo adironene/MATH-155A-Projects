@@ -64,7 +64,7 @@ GlGeomTorus texTorus(4, 4, 0.75);
 // General data helping with setting up VAO (Vertex Array Objects)
 //    and Vertex Buffer Objects.
 // ***********************
-const int NumObjects = 7;
+const int NumObjects = 9;
 const int iFloor = 0;
 const int iFloor1 = 1;
 const int iFillGround = 2;            // RESERVED FOR USE BY 155A PROJECT
@@ -72,6 +72,8 @@ const int iLawn1 = 3;
 const int iLawn2 = 4;
 const int iLawn11 = 5;
 const int iLawn21 = 6;
+const int map =7;
+const int mapFrame = 8;
 
 const int spawnX = 0;
 const int spawnY = 0;
@@ -189,6 +191,29 @@ void MyRenderGeometries() {
 
     renderTempleLawn();
     // Render the Floor - using a procedural texture map
+    selectShaderProgram(shaderProgramBitmap);
+    glBindVertexArray(myVAO[map]);                // Select the floor VAO (Vertex Array Object)
+    materialUnderTexture.LoadIntoShaders();         // Use the bright underlying color
+    viewMatrix.DumpByColumns(matEntries);           // Apply the model view matrix
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    glBindTexture(GL_TEXTURE_2D, TextureNames[10]);     // Choose Earth image texture
+    glUniform1i(applyTextureLocation, true);           // Enable applying the texture!
+    // Draw the floor as a single triangle strip
+    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, (void*)0);
+    glUniform1i(applyTextureLocation, false);
+    check_for_opengl_errors();
+
+    selectShaderProgram(shaderProgramBitmap);
+    glBindVertexArray(myVAO[mapFrame]);                // Select the floor VAO (Vertex Array Object)
+    materialUnderTexture.LoadIntoShaders();         // Use the bright underlying color
+    viewMatrix.DumpByColumns(matEntries);           // Apply the model view matrix
+    glUniformMatrix4fv(modelviewMatLocation, 1, false, matEntries);
+    //glBindTexture(GL_TEXTURE_2D, TextureNames[10]);     // Choose Earth image texture
+    //glUniform1i(applyTextureLocation, true);           // Enable applying the texture!
+    // Draw the floor as a single triangle strip
+    glDrawElements(GL_TRIANGLE_STRIP, 4, GL_UNSIGNED_INT, (void*)0);
+    check_for_opengl_errors();
+
     selectShaderProgram(shaderProgramBitmap);
     glBindVertexArray(myVAO[iFillGround]);                // Select the floor VAO (Vertex Array Object)
     materialUnderTexture.LoadIntoShaders();         // Use the bright underlying color
@@ -325,6 +350,45 @@ void renderChar() {
 }
 
 void renderTempleLawn() {
+
+    float mapVerts[] = {
+        // Position              // Normal                  // Texture coordinates
+        8.0f, 12.0f, 15.0f,      0.0f, 0.0f, 1.0f,          0.0f, 1.0f,         // Back left
+        16.0f, 12.0f, 15.0f,      0.0f, 0.0f, 1.0f,          1.0f, 1.0f,         // Back right
+        16.35f, 9.0f,  15.0f,      0.0f, 0.0f, 1.0f,          1.0f, 0.0f,         // Front right
+        8.2f, 9.0f,  15.0f,      0.0f, 0.0f, 1.0f,          0.0f, 0.0f,         // Front left
+    };
+    unsigned int mapElts[] = { 0, 3, 1, 2 };
+    glBindBuffer(GL_ARRAY_BUFFER, myVBO[map]);
+    glBindVertexArray(myVAO[map]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(mapVerts), mapVerts, GL_STATIC_DRAW);
+    glVertexAttribPointer(vertPos_loc, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);    // Vertex positions in the VBO
+    glEnableVertexAttribArray(vertPos_loc);                                 // Enable the stored vertices
+    glVertexAttribPointer(vertNormal_loc, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));    // Vertex normals in the VBO
+    glEnableVertexAttribArray(vertNormal_loc);                                  // Enable the stored vertices
+    glVertexAttribPointer(vertTexCoords_loc, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // Vertex texture coordinates in the VBO
+    glEnableVertexAttribArray(vertTexCoords_loc);                                   // Enable the stored vertices
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, myEBO[map]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(mapElts), mapElts, GL_STATIC_DRAW);
+
+    float mapFrameVerts[] = {
+        // Position              // Normal                  // Texture coordinates
+        7.8f, 12.2f, 14.8f,      0.0f, 0.0f, 1.0f,          0.0f, 1.0f,         // Back left
+        16.4f, 12.2f, 14.8f,      0.0f, 0.0f, 1.0f,          1.0f, 1.0f,         // Back right
+        16.75f, 8.8f,  14.8f,      0.0f, 0.0f, 1.0f,          1.0f, 0.0f,         // Front right
+        8.0f, 8.8f,  14.8f,      0.0f, 0.0f, 1.0f,          0.0f, 0.0f,         // Front left
+    };
+    glBindBuffer(GL_ARRAY_BUFFER, myVBO[mapFrame]);
+    glBindVertexArray(myVAO[mapFrame]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(mapFrameVerts), mapFrameVerts, GL_STATIC_DRAW);
+    glVertexAttribPointer(vertPos_loc, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);    // Vertex positions in the VBO
+    glEnableVertexAttribArray(vertPos_loc);                                 // Enable the stored vertices
+    glVertexAttribPointer(vertNormal_loc, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));    // Vertex normals in the VBO
+    glEnableVertexAttribArray(vertNormal_loc);                                  // Enable the stored vertices
+    glVertexAttribPointer(vertTexCoords_loc, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float))); // Vertex texture coordinates in the VBO
+    glEnableVertexAttribArray(vertTexCoords_loc);                                   // Enable the stored vertices
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, myEBO[mapFrame]);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(mapElts), mapElts, GL_STATIC_DRAW);
 
 
     float groundVerts[] = {
