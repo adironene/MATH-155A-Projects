@@ -34,50 +34,39 @@
 
 uniform sampler2D theTextureMap;	// An OpenGL texture map
 
-bool InMshape( vec2 pos );	// Function prototype
-bool InLshape( vec2 pos );	// Function prototype
-bool InHshape( vec2 pos );	// Function prototype
+bool InFshape( vec2 pos );	// Function prototype
 
 vec4 applyTextureFunction() {
 	vec2 wrappedTexCoords = fract(theTexCoords);	// Wrap s,t to [0,1].
 	vec4 myColor = vec4(nonspecColor, 1.0f)*texture(theTextureMap, theTexCoords);
-	if ( InMshape(wrappedTexCoords) || InLshape(wrappedTexCoords) || InHshape(wrappedTexCoords)) {	
+	if ( InFshape(wrappedTexCoords) ) {		
 		return vec4( 0, 0, 0, 1 );                // Black color inside the "F"
 	}
 	else {
-		vec3 combinedPhongColor = nonspecColor+specularColor;
-		//myColor += vec4(combinedPhongColor, 0.5f);
+		//vec3 combinedPhongColor = nonspecColor+specularColor;
         //return vec4(combinedPhongColor, 1.0f);   // Use the Phong light colors
         return myColor;
 	}
 }
 
-bool InMshape( vec2 pos ) {
-	float verticalMargin = 0.1127;
-	float xL = -1.5*sqrt(0.1-((pos.y-0.5)*(pos.y-0.5)))+0.79;
-	float xR = -0.8*sqrt(0.1-((pos.y-0.5)*(pos.y-0.5)))+0.79;
-	if(pos.y<verticalMargin || pos.y>1.0-verticalMargin) {
-			 return false;
+// *******************************
+// Recognize the interior of an "F" shape
+//   Input "pos" contains s,t  texture coordinates.
+//   Returns: true if inside the "F" shape.
+//            false otherwise
+// ******************************
+bool InFshape( vec2 pos ) {
+	float sideMargin = 0.2;		// Left-to-right, F is in [sideMargin, 1-sideMargin]
+	float verticalMargin = 0.1;	// Bottom-to-top, F is in [vertMargin, 1-vertMargin]
+	float postWidth = 0.2;      // Width of the F's post
+	float armWidth = 0.2;       // Width of the F's arms
+	if ( pos.x<sideMargin || pos.x>1.0-sideMargin ||
+	         pos.y<verticalMargin || pos.y>1.0-verticalMargin ) {
+		 return false;
+    }
+	if ( pos.x<=sideMargin+postWidth || pos.y >= 1.0-verticalMargin-armWidth ) {
+	    return true;
 	}
-	return pos.x>=xL && pos.x <=xR;
-}
-
-bool InLshape( vec2 pos ){
-	float landscape = 0.05* sin(pos.x*20)*cos(20*pos.x*pos.x)+0.15;
-	return pos.y<= landscape;
-}
-
-bool InHshape(vec2 pos){
-	float xCut = 0.3;
-	if(pos.x>xCut){
-		return false;
-	}
-	else if(pos.x<=0.15){
-	float hill = 20*pos.x*pos.x +0.08;
-		return pos.y<=hill;
-	}else{
-	float hill = 20*(pos.x-0.3)*(pos.x-0.3)+0.08;
-		return pos.y<=hill;
-	}
+	return ( pos.y <= 0.5+0.5*armWidth && pos.y >= 0.5-0.5*armWidth );
 }
 #endglsl
