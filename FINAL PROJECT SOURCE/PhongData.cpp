@@ -8,7 +8,7 @@
 #include "LinearR4.h"
 #include "GlGeomSphere.h"
 #include "GlShaderMgr.h"
-#include "TextureProj.h"
+#include "FinalProj.h"
 
 extern phGlobal globalPhongData;
 
@@ -31,9 +31,9 @@ phMaterial myEmissiveMaterials;   // Use for small spheres showing the location 
 // Especially, you may need to move them higher or lower!
 VectorR3 myLightPositions[4] = {
     VectorR3(-20.0, 10.0, 10.0),
-    VectorR3(0.0, 10.0, 0.0),
+    VectorR3(0.0, 15.0, 0.0),
     VectorR3(11.6, 10.5, 17.0), // map lax
-    VectorR3(-5.0, 10.0, 0.0),
+    VectorR3( 0.0, 02.0,20.0),
 };
 
 // Global Lighting parameters
@@ -49,7 +49,6 @@ void MySetupGlobalLight()
 // Gets called a lot since Position needs updating time view changes.
 void MySetupLights()
 {
-
     myLightSphere.InitializeAttribLocations(vertPos_loc); 
     
     // First light (light #0).
@@ -65,27 +64,29 @@ void MySetupLights()
     myLights[1].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
     // Third light (light #2)
-    myLights[2].AmbientColor.Set(0.2, 0.2, 0.2);    // Yellow color
-    myLights[2].DiffuseColor.Set(0.4, 0.4, 0.4);      // Very light gray
+    myLights[2].AmbientColor.Set(0.3, 0.3, 0.3);    // Yellow color
+    myLights[2].DiffuseColor.Set(0.6, 0.6, 0.6);      // Very light gray
     myLights[2].SpecularColor.Set(0.6, 0.6, 0.45);   // Very light gray
     myLights[2].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
 
-    myLights[4].DiffuseColor.Set(0.6, 0.6, 0.6);      // Very light gray
-    myLights[4].SpotCosCutoff = 0.95f;
-    myLights[4].IsSpotLight = true;
-    myLights[4].SpotExponent = 1.0f;
+    myLights[4].DiffuseColor.Set(0.6, 0.5, 0.4);      // Very light gray
     myLights[4].IsEnabled = true;                   // BE SURE TO ENABLE YOUR LIGHTS
 
         // Third light (light #2)
-    myLights[3].AmbientColor.Set(0.1, 0.2, 0.1);    // GREEN
-    myLights[3].DiffuseColor.Set(0.2, 0.4, 0.2);      // Very light gray
-    myLights[3].SpecularColor.Set(0.4, 0.8, 0.4);   // Very light gray
+    myLights[3].AmbientColor.Set(0.2, 0.2, 0.2);    // GREEN
+    myLights[3].DiffuseColor.Set(0.4, 0.4, 0.4);      // Very light gray
+    myLights[3].SpecularColor.Set(0.7, 0.7, 0.7);   // Very light gray
     myLights[3].IsEnabled = true;                     // BE SURE TO ENABLE YOUR LIGHTS
-
 }
 
 void LoadAllLights() 
 {
+    if (mapFull) {
+        myLightPositions[2] = VectorR3(0, 6, 16);
+    }
+    else {
+        myLightPositions[2] = VectorR3(11.6, 10.5, 17.0);
+    }
     myLights[0].SetPosition(viewMatrix, myLightPositions[0]);
     myLights[0].LoadIntoShaders(0); 
 
@@ -98,7 +99,7 @@ void LoadAllLights()
     myLights[3].SetPosition(viewMatrix, myLightPositions[3]);
     myLights[3].LoadIntoShaders(3);
 
-    myLights[4].SetPosition(viewMatrix, VectorR3(0.0, 6.0, 4.0));
+    myLights[4].SetPosition(viewMatrix, VectorR3(0.0, 8.0,20.0));
     myLights[4].SetSpotlightDirection(viewMatrix, VectorR3(0.0, -1.0, -0.5));
     myLights[4].LoadIntoShaders(4);
 
@@ -114,26 +115,6 @@ void LoadAllLights()
 // FEEL FREE TO CHANGE THESE VALUES FOR YOUR PROGRAMMING PROJECT!!
 void MySetupMaterials()
 {
-    // myMaterials[0]: Material for the initial
-    myMaterials[0].EmissiveColor.Set(0.2f, 0.2f, 0.2f);   // THIS SHOULD CHANGE TO 0,0,0 SO IT HAS NO EMISSION
-    myMaterials[0].AmbientColor.Set(0.3f, 0.4f, 0.3f);
-    myMaterials[0].DiffuseColor.Set(0.6f, 0.8f, 0.6f);
-    myMaterials[0].SpecularColor.Set(1.0,1.0,1.0);
-    myMaterials[0].SpecularExponent = 50.0;
-
-    // myMaterials[1]: Material for the ground plane
-    myMaterials[1].EmissiveColor.Set(0.0f, 0.0f, 0.0f);   // THIS SHOULD CHANGE TO 0,0,0 SO IT HAS NO EMISSION
-    myMaterials[1].AmbientColor.Set(0.5f, 0.2f, 0.2f);
-    myMaterials[1].DiffuseColor.Set(0.5f, 0.2f, 0.2f);
-    myMaterials[1].SpecularColor.Set(0.8, 0.8, 0.8);
-    myMaterials[1].SpecularExponent = 75.0;
-
-    // myMaterials[2]: Material for the surface of rotation
-    myMaterials[2].EmissiveColor.Set(0.0f, 0.0f, 0.0f);   // THIS SHOULD CHANGE TO 0,0,0  SO IT HAS NO EMISSION
-    myMaterials[2].AmbientColor.Set(0.3f, 0.4f, 0.4f);
-    myMaterials[2].DiffuseColor.Set(0.6f, 0.8f, 0.8f);
-    myMaterials[2].SpecularColor.Set(1.0,1.0,1.0);
-    myMaterials[2].SpecularExponent = 50.0;
 
 }
 

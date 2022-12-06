@@ -1,0 +1,163 @@
+﻿  MyGeometries.cpp
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(71,20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(610,69): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(610,69): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(610,78): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(610,78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(611,61): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(611,61): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(611,70): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(611,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(612,61): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(612,61): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(612,78): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(612,78): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(613,69): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(613,69): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(613,86): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(613,86): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(649,70): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(649,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(649,79): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(649,79): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(650,60): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(650,60): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(650,69): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(650,69): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(651,59): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(651,59): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(651,76): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(651,76): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(652,70): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(652,70): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(652,87): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(652,87): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(688,17): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(688,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(688,48): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(688,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(689,17): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(689,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(689,48): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(689,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(690,17): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(690,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(690,48): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(690,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(691,17): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(691,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(691,48): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(691,48): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(708,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(708,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(708,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(708,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(709,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(709,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(709,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(709,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(710,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(710,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(710,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(710,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(711,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(711,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(711,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(711,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(728,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(728,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(728,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(728,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(729,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(729,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(729,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(729,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(730,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(730,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(730,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(730,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(731,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(731,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(731,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(731,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(747,16): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(747,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(747,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(747,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(748,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(748,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(748,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(748,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(749,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(749,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(749,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(749,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(750,16): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(750,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(750,44): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(750,44): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(767,16): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(767,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(767,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(767,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(768,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(768,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(768,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(768,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(769,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(769,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(769,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(769,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(770,16): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(770,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(770,44): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(770,44): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(786,14): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(786,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(786,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(786,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(787,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(787,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(787,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(787,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(788,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(788,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(788,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(788,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(789,14): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(789,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(789,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(789,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(807,14): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(807,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(807,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(807,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(808,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(808,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(808,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(808,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(809,15): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(809,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(809,43): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(809,43): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(810,14): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(810,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(810,42): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(810,42): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(826,13): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(826,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(826,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(826,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(827,13): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(827,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(827,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(827,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(828,13): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(828,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(828,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(828,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(829,13): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(829,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(829,41): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+H:\My155AProjects\FINAL PROJECT SOURCE\MyGeometries.cpp(829,41): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Final.vcxproj -> H:\My155AProjects\Final\Debug\Final.exe

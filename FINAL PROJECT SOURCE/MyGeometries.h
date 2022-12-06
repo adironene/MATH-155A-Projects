@@ -31,4 +31,6 @@ void renderBuilding1();
 void renderBuilding2();
 void renderCurb();
 void renderBuilding3();
+void MyRenderMap();
+void renderTree();
 
